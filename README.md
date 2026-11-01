@@ -4,28 +4,31 @@ React 18 + TypeScript single-page application for the Home Automation Device Exp
 
 ## Tech Stack
 
-- **React 18.2** with TypeScript (strict mode)
-- **Vite** - Build tool and dev server
-- **React Router v6** - Client-side routing
-- **Axios** - HTTP client with interceptors
-- **React Hook Form + Zod** - Form management and validation
-- **Zustand** - Lightweight state management for auth
-- **Recharts** - Telemetry data visualization
-- **Jest + React Testing Library** - Testing framework
-- **MSW** - API mocking for tests
+- React 18.2
+- TypeScript 5.3 (strict mode)
+- Vite 5.0
+- React Router v6
+- Axios (API client)
+- React Hook Form + Zod (forms and validation)
+- Zustand (auth state management)
+- Recharts (telemetry visualization)
+- Jest + React Testing Library (testing)
+- MSW (API mocking)
 
-## Prerequisites
+## Getting Started
 
-- Node.js 18+ and npm 9+
-- Backend API running (see `HA_dxl_backend` repository)
+### Prerequisites
 
-## Installation
+- Node.js 18+ and npm
+- Backend API running on http://localhost:8080 (or configure VITE_API_BASE_URL)
+
+### Installation
 
 ```bash
 npm install
 ```
 
-## Configuration
+### Environment Configuration
 
 Copy `.env.example` to `.env` and configure:
 
@@ -33,61 +36,51 @@ Copy `.env.example` to `.env` and configure:
 cp .env.example .env
 ```
 
-Edit `.env` to point to your backend API:
+Edit `.env` with your backend API URL:
 
 ```
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
-## Development
-
-Start the development server:
+### Development
 
 ```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:3000`.
+Application runs at http://localhost:3000
 
-## Build
-
-Create a production build:
+### Build
 
 ```bash
 npm run build
 ```
 
-Preview the production build:
+Production build output in `dist/` directory.
+
+### Preview Production Build
 
 ```bash
 npm run preview
 ```
 
-## Testing
-
-Run all tests:
+### Testing
 
 ```bash
+# Run all tests with coverage
 npm test
-```
 
-Run tests in watch mode:
-
-```bash
+# Watch mode
 npm run test:watch
 ```
 
-## Code Quality
-
-Run ESLint:
+### Linting and Type Checking
 
 ```bash
+# ESLint
 npm run lint
-```
 
-Run TypeScript type checking:
-
-```bash
+# TypeScript type check
 npm run type-check
 ```
 
@@ -95,21 +88,37 @@ npm run type-check
 
 ```
 src/
-├── features/          # Feature modules (auth, users, devices, etc.)
-├── components/        # Shared components
-├── services/          # API client and service layer
-├── store/             # Zustand stores
-├── routes/            # Routing configuration
-├── hooks/             # Custom React hooks
-├── types/             # TypeScript type definitions
-├── utils/             # Utility functions
-├── styles/            # Global styles
-└── main.tsx           # Application entry point
+  features/          # Feature modules (auth, users, devices, etc.)
+  components/        # Shared UI components
+  services/          # API service layer
+  store/             # Zustand stores
+  routes/            # Routing configuration
+  hooks/             # Custom hooks
+  types/             # TypeScript type definitions
+  utils/             # Utility functions
+  tests/             # Test setup and mocks
 ```
 
-## Default Credentials
+## Key Features
 
-See backend documentation for default admin credentials.
+- JWT authentication with HttpOnly cookies
+- Role-based access control (ADMIN, USER, GUEST)
+- Device management and control
+- Real-time telemetry visualization
+- Automation rule creation and management
+- Audit log viewing
+- Responsive design
+- WCAG 2.1 AA accessibility
+
+## User Roles
+
+- **ADMIN**: Full system access
+- **USER**: Manage own devices and automations
+- **GUEST**: Read-only access to shared devices
+
+## Default Login Credentials
+
+Refer to backend seed data for default admin credentials.
 
 ## License
 
