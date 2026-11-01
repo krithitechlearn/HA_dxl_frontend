@@ -1,12 +1,6 @@
 module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterFramework: ['<rootDir>/src/test/setup.ts'],
-  setupFilesAfterFramework: undefined,
-  setupFilesAfterFramework: undefined,
-  setupFiles: [],
-  setupFilesAfterFramework: undefined,
-  testEnvironment: 'jest-environment-jsdom',
-  setupFilesAfterFramework: ['<rootDir>/src/test/setup.ts'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
@@ -26,4 +20,5 @@ module.exports = {
       lines: 70,
     },
   },
+  setupFilesAfterFramework: ['<rootDir>/src/test/setup.ts'],
 };
