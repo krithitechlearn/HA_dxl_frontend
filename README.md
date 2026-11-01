@@ -4,25 +4,23 @@ React 18 + TypeScript single-page application for the Home Automation Device Exp
 
 ## Tech Stack
 
-- React 18.2
-- TypeScript 5.3 (strict mode)
-- Vite 5.0
-- React Router v6
-- Axios (API client)
-- React Hook Form + Zod (forms and validation)
-- Zustand (auth state management)
-- Recharts (telemetry visualization)
-- Jest + React Testing Library (testing)
-- MSW (API mocking)
+- **React 18** with TypeScript (strict mode)
+- **Vite** for build tooling
+- **React Router v6** for routing
+- **Axios** for HTTP requests
+- **React Hook Form + Zod** for forms and validation
+- **Zustand** for global state management
+- **Recharts** for telemetry visualization
+- **Jest + React Testing Library** for testing
+
+## Prerequisites
+
+- Node.js 18+ and npm 9+
+- Backend API running on `http://localhost:8080` (or configure `VITE_API_BASE_URL`)
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+ and npm
-- Backend API running on http://localhost:8080 (or configure VITE_API_BASE_URL)
-
-### Installation
+### Install Dependencies
 
 ```bash
 npm install
@@ -36,27 +34,27 @@ Copy `.env.example` to `.env` and configure:
 cp .env.example .env
 ```
 
-Edit `.env` with your backend API URL:
+Edit `.env`:
 
 ```
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
-### Development
+### Development Server
 
 ```bash
 npm run dev
 ```
 
-Application runs at http://localhost:3000
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Build
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-Production build output in `dist/` directory.
+Output is in the `dist/` directory.
 
 ### Preview Production Build
 
@@ -64,24 +62,28 @@ Production build output in `dist/` directory.
 npm run preview
 ```
 
+### Linting
+
+```bash
+npm run lint
+```
+
+### Type Checking
+
+```bash
+npm run type-check
+```
+
 ### Testing
 
 ```bash
-# Run all tests with coverage
 npm test
-
-# Watch mode
-npm run test:watch
 ```
 
-### Linting and Type Checking
+Run tests in watch mode:
 
 ```bash
-# ESLint
-npm run lint
-
-# TypeScript type check
-npm run type-check
+npm run test:watch
 ```
 
 ## Project Structure
@@ -90,36 +92,39 @@ npm run type-check
 src/
   features/          # Feature modules (auth, users, devices, etc.)
   components/        # Shared UI components
-  services/          # API service layer
-  store/             # Zustand stores
   routes/            # Routing configuration
-  hooks/             # Custom hooks
+  services/          # API client and service layer
+  store/             # Zustand global stores
+  hooks/             # Custom React hooks
   types/             # TypeScript type definitions
   utils/             # Utility functions
-  tests/             # Test setup and mocks
+  styles/            # Global styles
 ```
 
 ## Key Features
 
-- JWT authentication with HttpOnly cookies
-- Role-based access control (ADMIN, USER, GUEST)
-- Device management and control
-- Real-time telemetry visualization
-- Automation rule creation and management
-- Audit log viewing
-- Responsive design
-- WCAG 2.1 AA accessibility
+- **Role-based access control** (ADMIN, USER, GUEST)
+- **Device management** with real-time status
+- **Device command issuance** with validation
+- **Telemetry visualization** with time-series charts
+- **Automation rules** with trigger and action configuration
+- **Audit log viewing** (ADMIN only)
+- **Responsive design** with mobile support
+- **Accessibility** compliant with WCAG 2.1 AA
 
-## User Roles
+## Authentication
 
-- **ADMIN**: Full system access
-- **USER**: Manage own devices and automations
-- **GUEST**: Read-only access to shared devices
+- JWT tokens stored in HttpOnly cookies
+- Automatic token refresh on 401 responses
+- Secure logout with cookie clearing
 
-## Default Login Credentials
+## Browser Support
 
-Refer to backend seed data for default admin credentials.
+- Chrome 120+
+- Firefox 120+
+- Safari 17+
+- Edge 120+
 
 ## License
 
-Proprietary - Home Automation DXL Platform
+Proprietary - All rights reserved
